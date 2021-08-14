@@ -1,5 +1,5 @@
 
-function searchNet {
+function Search-Net{
 
 [CmdletBinding()]
 	Param(
