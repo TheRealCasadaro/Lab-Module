@@ -6,7 +6,7 @@ function Search-Net{
 		[Parameter(Mandatory=$True,Position=0)]
 		[String]$SearchFor,
 		
-		[Parameter(Mandatory=$True,Position=1)]
+		[Parameter(Mandatory=$False,Position=1)]
 		[String]$Use
 	)
 
@@ -21,13 +21,6 @@ function Search-Net{
 		Exit
 	}
 	$Use = $Use.Trim()
-	If (!($Use)) {
-		Write-Host
-		Write-Host "Search Engine To Use Has Not Been Specified." -ForeGroundColor "Yellow"
-		Write-Host "Execution of the Script Has been Ternimated." -ForeGroundColor "Yellow"
-		Write-Host
-		Exit
-	}
 	$SearchFor = $SearchFor -Replace "\s+", " "
 	$SearchFor = $SearchFor -Replace " ", "+"
 
@@ -44,7 +37,7 @@ function Search-Net{
 			# -- "Use Bing Search Engine To Search"
 			$Query = "http://www.youtube.com/search?q=$SearchFor"
 		}
-		Default {$Query = "No Search Engine Specified"}
+		Default {$Query = "https://www.merriam-webster.com/dictionary/$SearchFor"}
 	}
 	If ($Query -NE "No Search Engine Specified") {
 		## -- Detect the Default Web Browser
@@ -56,6 +49,6 @@ function Search-Net{
 		Write-Host "Execution of the Script Has been Ternimated." -ForeGroundColor "Yellow"
 		Write-Host
 	}
-
+	
 }
 	
